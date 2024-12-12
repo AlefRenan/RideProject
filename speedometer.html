@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ride</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="global.css" />
+  </head>
+  <body class="h-100">
+    <div class="container d-flex flex-column justify-content-between h-100">
+      <nav class="navbar justify-content-end">
+        <a href="./index.html" class="btn btn-close border border-dark p-2"></a>
+      </nav>
+
+      <div
+        class="d-flex flex-column align-items-center bg-dark text-light flex-fill justify-content-center mb-3 rounded-3"
+      >
+        <span id="speed" class="fw-bold" style="font-size: 120px">0</span>
+        <span style="font-size: 36px">km/h</span>
+        <div style="display: flex">
+          <span id="distance" style="font-size: 36px"> </span>
+        </div>
+      </div>
+      <button id="start" class="btn btn-primary mb-3">
+        <span class="display-3">Start</span>
+      </button>
+      <button id="stop" class="btn btn-danger d-none mb-3">
+        <span class="display-3">Stop</span>
+      </button>
+    </div>
+
+    <script src="./storage.js"></script>
+    <script src="./speedometer.js"></script>
+  </body>
+</html>
