@@ -35,4 +35,5 @@ stopBnt.addEventListener("click", () => {
   updateStopTime(currentRide);
   startBnt.classList.remove("d-none");
   stopBnt.classList.add("d-none");
+  window.location.href = "index.html";
 });

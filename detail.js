@@ -38,7 +38,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.querySelector("#data").appendChild(dataElement);
 
-  const map = L.map("mapDetail");
+  const deleteButton = document.querySelector("#deleteBtn");
+  deleteButton.addEventListener("click", () => {
+    deleteRide(rideId);
+    window.location.href = "./";
+  });
+
+  const map = L.map("mapDetail", {
+    attributionControl: false,
+  });
   map.setView([firstPosition.latitude, firstPosition.longitude], 14);
   var OPNVKarte = L.tileLayer(
     "https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png",
@@ -53,4 +61,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   const polyline = L.polyline(positionArray, { color: "red" }).addTo(map);
+  map.fitBounds(polyline.getBounds());
 });

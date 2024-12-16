@@ -21,8 +21,9 @@ allRides.forEach(async ([id, value]) => {
     firstPosition.latitude,
     firstPosition.longitude
   );
-
+  const mapId = `map${ride.id}`;
   const mapElement = document.createElement("div");
+  mapElement.id = mapId;
   mapElement.style = "width:100px;height:100px";
   mapElement.classList.add("bg-secondary");
   mapElement.classList.add("rounded-4");
@@ -56,4 +57,21 @@ allRides.forEach(async ([id, value]) => {
 
   itemElement.appendChild(mapElement);
   itemElement.appendChild(dataElement);
+
+  const map = L.map(`${mapId}`, {
+    attributionControl: false,
+    zoomControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+  });
+  map.setView([firstPosition.latitude, firstPosition.longitude], 14);
+  var OPNVKarte = L.tileLayer(
+    "https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png",
+    {
+      minZoom: 10,
+      maxZoom: 15,
+    }
+  ).addTo(map);
+
+  L.marker([firstPosition.latitude, firstPosition.longitude]).addTo(map);
 });
